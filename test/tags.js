@@ -113,6 +113,10 @@ describe('fetchTags', () => {
     expect(await fetchTags({ ...options, startingDate: '2000-05-01' })).to.have.lengthOf(1)
   })
 
+  it('supports --ending-version', async () => {
+    expect(await fetchTags({ ...options, endingVersion: 'v0.2.2' })).to.have.lengthOf(3)
+  })
+
   it('supports partial semver tags', async () => {
     mock('cmd', () => Promise.resolve([
       'v0.1---2000-02-01',
